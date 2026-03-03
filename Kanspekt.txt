@@ -1,0 +1,49 @@
+Props
+Что это: Объект с данными, передаваемый от родителя к ребенку.
+
+Принцип: Immutable (только для чтения). Компонент-получатель не может их менять.
+
+Синтаксис: <Child name="Ahmed" /> -> доступ через props.name.
+
+State
+Что это: Внутренние данные компонента, которые могут меняться со временем.
+
+Принцип: Изменение стейта вызывает автоматический ререндер компонента.
+
+Инструмент: Хук useState в функциональных компонентах.
+
+Error Boundary (Предохранители)
+Компонент-обертка для отлова JS-ошибок в дочернем дереве. Предотвращает "белый экран" всего приложения.
+
+Особенности: * Реализуется только через Class Components.
+
+Использует методы static getDerivedStateFromError() (обновить UI) и componentDidCatch() (логирование).
+
+Что НЕ ловит:
+
+Обработчики событий (onClick и т.д.) — там используй try/catch.
+
+Асинхронный код (setTimeout, fetch).
+
+Ошибки серверного рендеринга (SSR).
+
+Ошибки в самом себе.
+
+Пример кода:
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+ Переключает стейт для показа запасного UI
+  componentDidCatch(error, info) {
+    console.error("Log error:", error, info);
+  }
+Логирование (Sentry и т.п.)
+
+  render() {
+    if (this.state.hasError) return <h1>Ошибка в этом блоке.</h1>;
+    return this.props.children;
+  }
+}
