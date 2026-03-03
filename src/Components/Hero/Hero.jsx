@@ -5,7 +5,7 @@ import ContentCards from "../ContentCards/ContentCards.jsx";
 
 function HeroSection() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className=" bg-gray-50">
       <header>
         <nav className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">

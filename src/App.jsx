@@ -6,8 +6,12 @@ import HeroSection from "./Components/Hero/Hero";
 function App() {
   return (
     <>
-      <HeroSection />
-      <CardsSection />
+      <main>
+        <div className="w-full">
+          <HeroSection />
+          <CardsSection />
+        </div>
+      </main>
     </>
   );
 }
